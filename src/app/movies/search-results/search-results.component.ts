@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GetMoviesService} from '../../get-movies.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FavoriteService} from '../favorite/favorite.service';
 
 @Component({
@@ -13,7 +13,12 @@ export class SearchResultsComponent implements OnInit {
   favoriteIds = [];
   genres;
 
-  constructor(private getMovies: GetMoviesService, private route: ActivatedRoute, private favorite: FavoriteService) {
+  constructor(
+    private getMovies: GetMoviesService,
+    private route: ActivatedRoute,
+    private favorite: FavoriteService,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
@@ -28,6 +33,10 @@ export class SearchResultsComponent implements OnInit {
           console.log(this.foundMovies);
         });
     });
+  }
+
+  goToMovie(movieId) {
+    this.router.navigate(['/movie', movieId]);
   }
 
 }

@@ -18,6 +18,7 @@ export class FavoriteService {
     let i = favorite.findIndex(item => item.id === movie.id);
     i > -1 ? favorite.splice(i, 1) : favorite.push(movie);
     this.updateStorage();
+    return favorite.map(favMovie => favMovie.id);
   }
 
   updateStorage() {

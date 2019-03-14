@@ -34,7 +34,7 @@ export class MovieComponent implements OnInit {
     this.favoriteIds = this.favoriteService.getFavoriteIds();
 
     this.route.params.subscribe(params => {
-      this.getMovies.getMovie(this.route.snapshot.params['id']).subscribe(movie => {
+      this.getMovies.getMovie(params['id']).subscribe(movie => {
         this.movie = movie;
       });
     });
