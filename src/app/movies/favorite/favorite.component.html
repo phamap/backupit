@@ -1,0 +1,5 @@
+<a class="btn btn-sm float-right pointer"
+   [ngClass]="{'btn-outline-warning': !isFavorite, 'btn-warning': isFavorite}"
+   (click)="toggleFavorite(movie, $event)">
+  favorite
+</a>
