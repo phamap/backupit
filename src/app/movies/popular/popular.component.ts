@@ -19,11 +19,12 @@ export class PopularComponent implements OnInit {
   constructor(private getMovies: GetMoviesService, private router: Router, private favorite: FavoriteService) { }
 
   ngOnInit() {
-    const that = this;
+    let that = this;
     this.getPopularMoviesByPageNum(this.currentPage);
     window.addEventListener('scroll', function (e) {
       if (document.body.scrollHeight === (window.pageYOffset + window.innerHeight)) {
         that.getPopularMoviesByPageNum(that.currentPage + 1);
+        that.currentPage++;
       }
     });
     this.getMovies.getGenres().subscribe(genres => {
